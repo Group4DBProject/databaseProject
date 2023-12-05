@@ -29,7 +29,7 @@
         }
         $pdo->beginTransaction();
         try {
-            $stmt = $pdo->prepare("INSERT INTO Customers (First_name, Last_name, Street, City, State, Zip_code, Phone_number, Date_of_birth) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO Customers (First_name, Last_name, Street, City, State, Zip_code, Phone_number, Date_of_birth, Type ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'USER' )");
             $stmt->execute([$first_name, $last_name, $street, $city, $state, $zip_code, $phone_number, $date_of_birth]);
             $customer_id = $pdo->lastInsertId();
             $stmt = $pdo->prepare("INSERT INTO User_Credentials (Customer_ID, Username, Password) VALUES (?, ?, ?)");
@@ -57,7 +57,7 @@
         $stmt->execute([$customer_id, $bank_id, $type, $balance]);
         return $pdo->lastInsertId();
     }
-    
+
     function deposit($pdo, $account_id, $amount) {
         // Ensure amount is numeric and greater than zero
         if (!is_numeric($amount) || $amount <= 0) {
@@ -109,7 +109,6 @@
         }
     }
     
-
     function transfer($pdo, $from_account_id, $to_account_id, $amount) {
         // Ensure amount is numeric and greater than zero
         if (!is_numeric($amount) || $amount <= 0) {

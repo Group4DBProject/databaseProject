@@ -31,12 +31,22 @@
         session_destroy();
     }
 
-    function isUserAuthorizedForAccount($pdo, $user_id, $account_id) {
+    function isUserAuthorizedForAccount($pdo, $user_id, $account_id, $request_type = 'NULL') {
         // Ensure user_id and account_id are numeric and positive
         if (!is_numeric($user_id) || $user_id <= 0 || !is_numeric($account_id) || $account_id <= 0) {
             throw new InvalidArgumentException('Invalid user or account holder ID.');
         }
         
+        if($request_type == 'Deposit' || $request_type == 'Withdraw'){
+           
+            $stmt = $pdo->prepare("
+                SELECT COUNT(*)
+                FROM Customers
+                WHERE Customer_ID = :user_id AND TYPE = :account_type
+            ");
+            $stmt->execute([':user_id' => $user_id, ':account_type' => 'ADMIN']);
+            return $stmt->fetchColumn() > 0;
+        }
         $stmt = $pdo->prepare("
             SELECT COUNT(*) 
             FROM Bank_Accounts
@@ -45,7 +55,7 @@
         
         $stmt->execute([':user_id' => $user_id, ':account_id' => $account_id]);
         $isAuthorized = $stmt->fetchColumn();
-    
         return $isAuthorized > 0;
     }
+    
 ?>

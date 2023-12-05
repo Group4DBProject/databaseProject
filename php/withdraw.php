@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $account_id = $_POST['account_id'];
 
     // Authenticate user for the account
-    if (isUserAuthorizedForAccount($pdo, $user_id, $account_id)) {
+    if (isUserAuthorizedForAccount($pdo, $user_id, $account_id, "Withdraw")) {
         // Call the transfer function
         try {
             withdraw($pdo, $account_id, $amount);

@@ -9,11 +9,34 @@ CREATE TABLE IF NOT EXISTS Customers (
     Street VARCHAR(255),
     City VARCHAR(100),
     State VARCHAR(100),
-    -- Type ENUM()
+    Type ENUM("ADMIN", "USER"),
     Zip_code VARCHAR(10),
-    Phone_number VARCHAR(15),
+    Phone_number VARCHAR(15) UNIQUE NOT NULL,
     Date_of_birth DATE
 );
+
+ -- INserting Admin user into customers table
+INSERT INTO Customers (
+    First_name,
+    Last_name,
+    Street,
+    City, 
+    State, 
+    Type, 
+    Zip_code, 
+    Phone_number, 
+    Date_of_birth
+    ) VALUES (
+        'Admin',
+        'Admin',
+        '123 Admin Street',
+        'Admin City',
+        'Admin State',
+        'ADMIN',
+        '12345',
+        '8473838392',
+        '1990-01-01'
+        );
 
 -- Table for storing bank information
 CREATE TABLE IF NOT EXISTS Banks (
@@ -57,3 +80,14 @@ CREATE TABLE IF NOT EXISTS User_Credentials (
     Password VARCHAR(255) NOT NULL,
     FOREIGN KEY (Customer_ID) REFERENCES Customers(ID)
 );
+
+-- Inserting ADMIN credentials into User_Credentials table
+INSERT INTO User_Credentials(
+    Customer_ID,
+    Username,
+    Password
+    ) VALUES (
+        1,
+        'admin',
+        'adminpassword'
+)
