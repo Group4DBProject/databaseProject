@@ -1,33 +1,110 @@
-<html>
-    <div style="height: 100vh; width: 100vw; background-color: forestgreen;">
-        <div style="height: 20%;">
-            <h1 style="text-align: center;">Bank Page</h1>
-        </div>
-        <div style="height: 20%">
-            <form>
-                <label style="font-size: 4vh;">Amount to deposit:</label>
-                <input style="font-size: 4vh; height: 25%; width: 20%;" type="text">
-            </form>
-            <!--deposit mony php function here-->
-        </div>
-        <div style="height: 20%">
-            <form>
 
-            </form>
-            <label style="font-size: 4vh;">Amount to transfer:</label>
-            <input style="font-size: 4vh; height: 25%; width: 20%;" type="text">
-            <label style="font-size: 4vh;">Target Account</label>
-            <input style="font-size: 4vh; height: 25%; width: 20%;" type="text">
-            <!--transfer money php function here-->
-        </div>
-        <div style="height: 20%">
-            <label style="font-size: 4vh;">Amount to deposit:</label>
-            <input style="font-size: 4vh; height: 25%; width: 20%;" type="text">
-            <!--withdraw money php function here-->
-        </div>
-        <div style="height: 20%; font-size: 4vh">
-            <p>Your balance is:</p>
-            <!--display the balance here-->
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>User Account</h2>
+
+        <h3>Balance: </h3>
+
+        <label for="depositAmount">Deposit Amount:</label>
+        <input type="number" id="depositAmount" name="depositAmount" required>
+
+        <button onclick="deposit()">Deposit</button>
+
+
+        <label for="withdrawAmount">Withdraw Amount:</label>
+        <input type="number" id="withdrawAmount" name="withdrawAmount" required>
+
+        <button onclick="withdraw()">Withdraw</button>
+
+        
+        <label for="transferAmount">Transfer Amount:</label>
+        <input type="number" id="transferAmount" name="transferAmount" required>
+
+        <label for="recipientAccount">Recipient Account:</label>
+        <input type="text" id="recipientAccount" name="recipientAccount" required>
+
+        <button onclick="transfer()">Transfer</button>
+>>>>>>> Stashed changes
     </div>
+
+    <script>
+        //PHP code that connects to our database will go here
+        //These are placeholder functions
+        function deposit() {
+            // Implement deposit functionality
+            alert('Deposit successful!');
+        }
+
+        function withdraw() {
+            // Implement withdraw functionality
+            alert('Withdrawal successful!');
+        }
+
+        function transfer() {
+            // Implement transfer functionality
+            alert('Transfer successful!');
+        }
+    </script>
+
+</body>
 </html>
