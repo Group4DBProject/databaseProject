@@ -8,7 +8,7 @@
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone_number = $_POST["phone_number"];
-        $first_name = $_POST["bank_name"];
+        $first_name = $_POST["first_name"];
         $last_name = $_POST["last_name"];
         $street = $_POST["street"];
         $city = $_POST["city"];

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS Customers (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     First_name VARCHAR(100),
     Last_name VARCHAR(100),
+    -- email VARCHAR(255) UNIQUE NOT NULL,
     Street VARCHAR(255),
     City VARCHAR(100),
     State VARCHAR(100),

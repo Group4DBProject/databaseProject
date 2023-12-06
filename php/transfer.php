@@ -2,7 +2,8 @@
 session_start();
 
 require 'connection.php';
-require 'operations.php';  
+require 'operations.php';
+require 'auth.php';  
 
 // Check if user is logged in
 if (!isset($_SESSION['customer_id'])) {

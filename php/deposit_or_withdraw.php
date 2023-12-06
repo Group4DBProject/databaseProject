@@ -2,7 +2,8 @@
 session_start();
 
 require 'connection.php';
-require 'operations.php';  
+require 'operations.php';
+require 'auth.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['customer_id'])) {
@@ -15,13 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $amount = $_POST['amount'];
     $user_id = $_SESSION['customer_id']; // Get the logged-in user's ID
     $account_id = $_POST['account_id'];
+    $type = $_POST['Transaction'];
 
     // Authenticate user for the account
-    if (isUserAuthorizedForAccount($pdo, $user_id, $account_id, "Deposit")) {
+    if (isUserAuthorizedForAccount($pdo, $user_id, $account_id, "ADMIN")) {
         // Call the transfer function
         try {
-            deposit($pdo, $account_id, $amount);
-            echo "Funds deposited successfully.";
+            if ($type == "withdraw") {
+                withdraw($pdo, $account_id, $amount);
+                echo "Funds withdrawn successfully.";
+            } else if ($type == "deposit")
+            {
+                deposit($pdo, $account_id, $amount);
+                echo "Funds deposited successfully.";
+            }
+            else{
+                echo "Invalid transaction type.";
+            }
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }

@@ -56,17 +56,44 @@
 </head>
 <body>
 
-    <form>
+    <form action="../php/register_user.php" method="post">
         <h2>Death & Taxes Banking</h2>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="firstname" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="lastname" name="last_name" required>
+
+        <label for="street">Street:</label>
+        <input type="text" id="street" name="street" required>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+
+        <label for="zip">Zip:</label>
+        <input type="text" id="zip" name="zip" required>
+
+        <label for="phone_number">Phone:</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+
+        <!-- <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required> -->
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Sign In</button>
+        <button type="submit">Sign Up</button>
     </form>
 
 </body>
->>>>>>> Stashed changes
 </html>

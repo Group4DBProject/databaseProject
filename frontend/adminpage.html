@@ -61,30 +61,43 @@
 <body>
 
     <div class="container">
-        <h2>User Account</h2>
+        <h2>Deposit or Withdraw</h2>
+        <form action="../php/deposit_or_withdraw.php" method="post">
+            <label for="Account">Account_ID:</label>
+            <input type="text" id="Account" name="account_id" required>
 
-        <h3>Balance: </h3>
+            <label for="Amount">Amount:</label>
+            <input type="number" id="Amount" name="amount" required>
 
-        <label for="depositAmount">Deposit Amount:</label>
-        <input type="number" id="depositAmount" name="depositAmount" required>
+            <label for="Transaction">Transaction:</label>
+            <select id="Transaction" name="Transaction">
+                <option value="deposit">Deposit</option>
+                <option value="withdraw">Withdraw</option>
+            </select>
 
-        <button onclick="deposit()">Deposit</button>
 
+            <button type="submit">Submit</button>
+        </form>
+        <hr />
+        <h2>Create Account For Customer</h2>
+        <form action="../php/create_account.php" method="post">
+            <label for="customer_id">Customer_ID:</label>
+            <input type="text" id="Customer" name="customer_id" required>
 
-        <label for="withdrawAmount">Withdraw Amount:</label>
-        <input type="number" id="withdrawAmount" name="withdrawAmount" required>
+            <label for="Amount">Amount:</label>
+            <input type="number" id="Amount" name="balance" required>
 
-        <button onclick="withdraw()">Withdraw</button>
+            <label for="bank_id">Bank:</label>
+            <input type="text" id="Bank" name="bank_id" required>
 
-        
-        <label for="transferAmount">Transfer Amount:</label>
-        <input type="number" id="transferAmount" name="transferAmount" required>
+            <label for="account_type">Account Type:</label>
+            <select id="account_type" name="account_type">
+                <option value="Checking">Checking</option>
+                <option value="Savings">Savings</option>
+            </select>
 
-        <label for="recipientAccount">Recipient Account:</label>
-        <input type="text" id="recipientAccount" name="recipientAccount" required>
+            <button type="submit">Create Account</button>
 
-        <button onclick="transfer()">Transfer</button>
->>>>>>> Stashed changes
     </div>
 
     <script>

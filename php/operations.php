@@ -153,4 +153,25 @@
         return $balance;
     }
 
+    function get_customers_accounts($pdo, $customer_id) {
+        $stmt = $pdo->prepare("SELECT * FROM Bank_Accounts WHERE Customer_ID = ?");
+        $stmt->execute([$customer_id]);
+        $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $accounts;
+    }
+
+    function get_customers_transactions($pdo, $customer_id) {
+        $stmt = $pdo->prepare("SELECT * FROM Bank_Accounts WHERE Customer_ID = ?");
+        $stmt->execute([$customer_id]);
+        $accounts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $transactions = array();
+        foreach ($accounts as $account) {
+            $stmt = $pdo->prepare("SELECT * FROM Transactions WHERE Account_ID = ? OR Recipient_Account_ID = ?");
+            $stmt->execute([$account['Account_ID'], $account['Account_ID']]);
+            $transactions[$account['Account_ID']] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $transactions;
+    }
+
+
 ?>
