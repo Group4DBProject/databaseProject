@@ -22,6 +22,7 @@
         try{
             $bank_id = registerCustomer($pdo, $first_name, $last_name, $street, $city, $state, $zip, $phone_number, $dob, $username, $password);
             echo "User registered successfully.";
+            header("Location: ../frontend/index.html");
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
